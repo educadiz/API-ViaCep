@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>:: Projeto Via CEP || Localização ::</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+    <div class="container">
+        <h3>Localização: Consulta por CEP:</h3>
+        <form>
+            <div class="form-group">
+                <label for="cep">CEP:</label>
+                <div class="input-button-group">
+                    <input type="text" id="cep" placeholder="Insira CEP"/>
+                    <div class="button-group">
+                        <button type="button" onclick="buscarCEP()">Buscar</button>
+                        <button type="button" onclick="limparDados()">Limpar</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="container">
+        <h3>Localização: Consulta por nome da Rua:</h3>
+        <form>
+            <div class="form-group">
+                <label>Estado:</label>
+                <select id="uf" onchange="listarCidade(event)"></select>
+            </div>
+            <div class="form-group">
+                <label>Cidade:</label>
+                <select id="cidade">
+                    <option value="" disabled selected>Selecione uma cidade</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Rua:</label>
+                <input type="text" id="rua" size="40" placeholder="Insira o nome da rua"/>
+                            
+            <button type="button" onclick="buscarRua()">Buscar</button>
+            <button type="button" onclick="limparDados()">Limpar</button>
+        </div>
+        </form>
+    </div>
+
+    <div id="retornoConsulta" class="container">
+        <h3>Resultado da Consulta:</h3>
+        <div id="retorno"></div>
+        <div id="map" style="height: 300px; margin-top: 20px; display: none;"></div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/imask"></script>
+    <script>
+        IMask(document.getElementById('cep'), {
+            mask: '00000-000'
+        });
+    </script>
+    <script src="./script/script.js"></script>
+    
+    <footer class="footer">
+        <small>&copy; Eduardo Cadiz 2025</small>
+    </footer>
+</body>
+</html>
